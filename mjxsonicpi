@@ -1,0 +1,64 @@
+#Once you select your loop (filter through the Angelic Vibes Loops folder), set the BPM to match the loop.
+use_bpm 130
+
+#name these variables whatever you want, you're simply importing the filepath of where the Angelic Vibes files are stored
+#filepath that holds the folder for all of the sounds you'll be using
+vibes = "/Users/michaeljacob/Downloads/Free Clouds Pack (AngelicVibes)/Clouds (AngelicVibes)/Loops"
+sauce = "/Users/michaeljacob/Downloads/Free Clouds Pack (AngelicVibes)/Clouds (AngelicVibes)/Drums"
+
+
+with_fx :reverb do
+  live_loop :vibe1 do
+    sample vibes, "okay.wav", amp: 2
+    sleep 8
+  end
+  
+  live_loop :kick1 do
+    sample sauce, "AngelicVibes - Clouds - Kick Saturated.wav", amp: 5
+    sleep 5
+    sample sauce, "AngelicVibes - Clouds - Kick Saturated.wav", amp: 5
+    sleep 3
+  end
+  
+  live_loop :kick2 do
+    sleep 16
+    sample sauce, "AngelicVibes - Clouds - Kick Saturated.wav", amp: 5
+    sleep 0.5
+    sample sauce, "AngelicVibes - Clouds - Kick Saturated.wav", amp: 5
+    sleep 0.5
+    sample sauce, "AngelicVibes - Clouds - Kick Saturated.wav", amp: 5
+  end
+  
+  #below is simply a different method for calling your snares - you can set a function called snare, or you can set the snare
+  #just like every other instrument
+  def snare(v)
+    sample :sn_generic, rate: 3, amp: 3*v
+  end
+  
+  #we are calling the snare funciton we set earlier, it is another method of playing back sounds (0,0,0,1 where each digit is a second
+  #and each 0 is a no hit, and each 1 is a hit). This gives you more granular control of the sounds, especially when live coding
+  live_loop :brokenneck do
+    sync "/live_loop/vibe1"
+    vs = [0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0]
+    vs.each {
+      |v|
+      snare(v)
+      sleep 1
+    }
+  end
+  live_loop :hats do
+    sample sauce, "AngelicVibes - Clouds - Closed Hat Center.wav", amp: 2
+    sleep 0.5
+  end
+  
+  live_loop :dropit do
+    sample sauce, "AngelicVibes - Clouds - 808 Milo (C).wav", amp: 5
+    sleep 24
+  end
+end
+
+
+
+
+
+
