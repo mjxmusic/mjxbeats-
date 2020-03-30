@@ -5,3 +5,7 @@
 
 <h1>Once installing everything above</h1>
 <p>You're ready to get dangerous. Navigate to <b>mjxsonicpi</b> and copy this code into your sonic pi enviornment. Pay special attention to the filepath of where you saved the Angelic Vibes soundkit. 
+  
+<h1>Credits and Inspiration</h1>
+S/o to Sam Aaron for creating the Sonic Pi application, Angelic vibes for supplying the most dope soundkit, and Synaesmedia for creating incredible tutorials and helping me put this together: https://www.youtube.com/synaesmedia
+
